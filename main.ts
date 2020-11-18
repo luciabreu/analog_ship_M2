@@ -1,3 +1,23 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    item = receivedNumber
+    if (item == 0) {
+        maqueen.motorStop(maqueen.Motors.All)
+    } else if (item == 1) {
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 50)
+    } else if (item == 2) {
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, 50)
+    } else if (item == 3) {
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 30)
+        basic.pause(50)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 50)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 50)
+    } else if (item == 4) {
+        maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 30)
+        basic.pause(50)
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 50)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 50)
+    }
+})
 function goEast (speed: number) {
     maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, speed)
     maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, speed)
@@ -43,32 +63,10 @@ function goNorth (speed: number) {
     maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, speed)
     strip.showColor(neopixel.colors(NeoPixelColors.Green))
 }
-NFC.nfcEvent(function () {
-    if (NFC.getUID() == cardID1) {
-        basic.showNumber(1)
-    } else if (NFC.getUID() == cardID2) {
-        basic.showNumber(2)
-    } else if (NFC.getUID() == cardID3) {
-        basic.showNumber(3)
-        radio.sendString("")
-    } else if (NFC.getUID() == cardID4) {
-        basic.showNumber(4)
-    } else if (NFC.getUID() == cellID5) {
-        basic.showNumber(5)
-    }
-})
+let item = 0
 let strip: neopixel.Strip = null
-let cellID5 = ""
-let cardID4 = ""
-let cardID3 = ""
-let cardID2 = ""
-let cardID1 = ""
-NFC.NFC_setSerial(SerialPin.P0, SerialPin.P1)
-cardID1 = "76456E95"
-cardID2 = "76C75095"
-cardID3 = "DDFAD604"
-cardID4 = "2D08D404"
-cellID5 = "59F57EA2"
-basic.showIcon(IconNames.Heart)
+basic.showIcon(IconNames.Chessboard)
 radio.setGroup(25)
+radio.setGroup(31)
+radio.setGroup(20)
 strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
