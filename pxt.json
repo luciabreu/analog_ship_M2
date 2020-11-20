@@ -4,10 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "maqueen": "github:dfrobot/pxt-maqueen#v1.2.3",
         "neopixel": "github:microsoft/pxt-neopixel#v0.6.12",
-        "NFC": "github:lioujj/pxt-nfc#624ea88a211cdee8e24eb0f392529e3aa0da930c",
-        "dfplayermini": "github:51bit/dfplayermini#v0.1.6"
+        "microphone": "*"
     },
     "files": [
         "main.blocks",
@@ -21,5 +19,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
